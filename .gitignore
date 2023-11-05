@@ -1,0 +1,81 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Ignore system and temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.project
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.docstates
+
+# Ignore logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Ignore OS generated files
+ehthumbs.db
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# Ignore package manager files
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ignore build output
+/build/
+/dist/
+/out/
+
+# Ignore configuration files
+.env
+*.conf
+*.config
+
+# Ignore backup and archive files
+*.bak
+*.zip
+*.tar
+*.gz
+
+# Ignore compiled binary files
+*.class
+*.jar
+
+# Ignore images
+*.png
+*.jpg
+
+# Ignore fonts
+*.ttf
+*.woff
+
+# Ignore archives
+*.rar
+
+# Ignore database files
+*.db
+
+# Ignore dependencies folder
+.deps/
+
+# Ignore editor-specific files
+*.sublime-project
+*.sublime-workspace
+*.vscode/
+*.idea/
+
+# Ignore macOS folder attributes
+.AppleDouble
+
+# Ignore Windows folder configuration files
+Desktop.ini
