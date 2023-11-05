@@ -42,10 +42,12 @@ export const SetTimeOut = () => {
     console.log('setTimeOut')
 
     useEffect(() => {
-        setTimeout(() => {
+        const timeOut = setTimeout(() => {
             console.log('Set')
             document.title = count.toString()
         }, 1000)
+
+        return () => clearTimeout(timeOut);
     }, [count]);
 
 
@@ -66,10 +68,12 @@ export const SetInterval = () => {
     console.log('SetInterval')
 
     useEffect(() => {
-        setInterval(() => {
-            console.log(`tick ${count}`)
+        const intervalId = setInterval(() => {
+            console.log(`Timeout expired`)
             setCount((state) => state + 1)
         }, 1000)
+
+        return () => clearInterval(intervalId);
     }, []);
 
 
@@ -86,3 +90,55 @@ export const SetInterval = () => {
 // indexedDB
 // document.getElementId
 // document.title = 'Users'
+
+
+export const ResetEffectExample = () => {
+    const [counter, setCounter] = useState(1)
+
+    console.log('Component rendered ' + counter)
+    useEffect(() => {
+        console.log('Effect occurred: ' + counter)
+
+        return () => {
+            console.log('Reset Effect ' + counter)
+        }
+    }, [counter]);
+
+    const increase = () => {
+        setCounter(counter + 1)
+    }
+    return (
+        <div>
+            <>Hello, counter: {counter}</>
+            <button onClick={increase}>+</button>
+        </div>
+    )
+}
+
+
+export const KeysTrackerExample = () => {
+    const [text, setText] = useState('')
+
+    console.log('Component rendered ' + text)
+    useEffect(() => {
+        const handle = (e: KeyboardEvent) => {
+            console.log(e.key)
+            setText(text + e.key)
+        }
+
+        window.addEventListener('keypress', handle)
+        console.log('Effect occurred: ' + text)
+
+        return () => {
+            console.log('Reset Effect ' + text)
+            window.removeEventListener('keypress', handle)
+        }
+    }, [text]);
+
+    return (
+        <div>
+            <>Typed text: {text}</>
+
+        </div>
+    )
+}
